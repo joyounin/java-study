@@ -6,4 +6,18 @@
     <version>0.0.1-SNAPSHOT</version>
   </parent>
   <artifactId>chapter03</artifactId>
+  
+  <packaging>pom</packaging>
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.build.outputEncoding>UTF-8</project.build.outputEncoding>
+		<maven.compiler.source>17</maven.compiler.source>
+		<maven.compiler.target>17</maven.compiler.target>
+	</properties>
+	<build>
+		<finalName>java-study</finalName>
+	</build>
+	<modules>
+		<module>chapter03</module>
+	</modules>
 </project>
