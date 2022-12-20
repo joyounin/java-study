@@ -1,0 +1,10 @@
+
+##maven
+**/target/
+**/build/
+**/out
+
+##eclips
+**/.settings
+**/.classpath
+**/.project
