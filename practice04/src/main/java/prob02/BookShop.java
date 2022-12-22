@@ -1,6 +1,5 @@
 package prob02;
 
-import java.awt.print.Book;
 import java.util.Scanner;
 
 public class BookShop {
@@ -28,6 +27,11 @@ public class BookShop {
 		Scanner scanner = new Scanner(System.in);
 		System.out.print("대여 하고 싶은 책의 번호를 입력하세요:");
 		int num = scanner.nextInt();
+		for(Book book:books) {
+			if(num == book.getBookNo()) {
+				book.rent();
+			}
+		}
 		scanner.close();
 		
 		// (3) Book 객체의 정보를 출력
