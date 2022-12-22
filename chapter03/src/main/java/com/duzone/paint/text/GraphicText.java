@@ -1,4 +1,6 @@
-package paint;
+package com.duzone.paint.text;
+
+import com.duzone.paint.i.Drawable;
 
 public class GraphicText implements Drawable {
 	private String text;

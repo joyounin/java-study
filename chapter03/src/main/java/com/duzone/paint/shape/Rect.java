@@ -1,4 +1,4 @@
-package paint;
+package com.duzone.paint.shape;
 
 public class Rect extends Shape {
 	private int x1, y1;
