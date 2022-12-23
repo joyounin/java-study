@@ -3,7 +3,6 @@
 	<groupId>com.duzone</groupId>
 	<artifactId>java-study</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	
 	<packaging>pom</packaging>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -22,5 +21,6 @@
 		<module>practice03</module>
 		<module>practice04</module>
 		<module>practice05</module>
+		<module>chapter04</module>
 	</modules>
 </project>
