@@ -1,31 +1,40 @@
 package prob5;
 
+import java.util.Arrays;
+
 public class MyStack {
 	private String[] buffer;
-	private int top;
-	
+	int top;
+
 	public MyStack(int i) {
-		this.top = i;
+		buffer = new String[i];
+		this.top = -1;
+
 	}
 
 	public void push(String string) {
-		if(buffer.length < top) {
-			top += 1;
-		} else if(buffer.length > top) {
-			top -= 1;
+		if( top == buffer.length - 1) {
+			String[] buffer2 = new String[buffer.length + 3];
+			for(int i =0; i < buffer.length; i++) {
+				buffer2[i] = buffer[i];
+			}
+			buffer = buffer2;
 		}
+		buffer[++top] = string;
+		
 	}
 
 	public boolean isEmpty() {
-		// TODO Auto-generated method stub
-		return false;
+		return top == -1;
 	}
-	
+
 	public String pop() throws MyStackException {
-		if(isEmpty()) {
+		if (isEmpty()) {
 			throw new MyStackException("stack is empty");
 		}
-		
-		return null;
+		String result = buffer[top];
+		buffer[top--] = null;
+		return result;
+
 	}
 }
