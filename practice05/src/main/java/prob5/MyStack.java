@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 public class MyStack {
 	private String[] buffer;
-	int top;
+	private int top;
 
 	public MyStack(int i) {
 		buffer = new String[i];
