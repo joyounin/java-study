@@ -10,6 +10,7 @@ public class CalendarTest {
 		cal.set(Calendar.YEAR, 2021);
 		cal.set(Calendar.MONTH, 11);  //12월(Month-1)
 		cal.set(Calendar.DATE, 25);
+		
 		cal.set(2019, 4, 23);
 		cal.add(Calendar.DATE, 1313);
 		
