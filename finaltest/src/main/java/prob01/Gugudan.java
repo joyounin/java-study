@@ -11,9 +11,25 @@ public class Gugudan {
 		this.rValue = rValue;
 	}
 
+	public int getlValue() {
+		return lValue;
+	}
+
+	public void setlValue(int lValue) {
+		this.lValue = lValue;
+	}
+
+	public int getrValue() {
+		return rValue;
+	}
+
+	public void setrValue(int rValue) {
+		this.rValue = rValue;
+	}
+
 	@Override
 	public int hashCode() {
-		return Objects.hash(lValue, rValue);
+		return Objects.hash(lValue * rValue);
 	}
 
 	@Override
@@ -25,6 +41,6 @@ public class Gugudan {
 		if (getClass() != obj.getClass())
 			return false;
 		Gugudan other = (Gugudan) obj;
-		return lValue == other.lValue && rValue == other.rValue;
+		return lValue * rValue == other.lValue * other.rValue;
 	}
 }
