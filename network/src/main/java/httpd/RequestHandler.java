@@ -52,14 +52,15 @@ public class RequestHandler extends Thread {
 
 			// 요청 처리
 			// consoleLog(request);
+			consoleLog(request);
+
 			String[] tokens = request.split(" "); // 3개로 보내주기로 약속 1.메소드 2. URL 3. 프로토콜
 			if ("GET".equals(tokens[0])) {
-				consoleLog(request);
 				reponseStaticResource(outputStream, tokens[1], tokens[2]); // URL 위치 token[1]에 위치해있다.
 			} else {
 				// methods : POST, PUT, DELETE, HEAD, CONNECT CRUD: c:POST r:GET u:PUT d: DELETE
 				// SimpleHttpServer 에서는 무시한다.(400 Bad Resquest) GET으로 오면 200 응답
-				// reponse400Error(outputStream, tokens[2]);
+				reponse400Error(outputStream, tokens[2]);
 
 			}
 
@@ -87,27 +88,67 @@ public class RequestHandler extends Thread {
 		}
 	}
 
-	private void reponseStaticResource (
-			OutputStream outputStream,
-			String url,
-			String protocol) throws IOException {
+	private void reponseStaticResource(OutputStream outputStream, String url, String protocol) throws IOException {
+
 		// default(welcome) file set
-		if("/".equals(url)) {
+		if ("/".equals(url)) {
 			url = "/index.html";
 		}
-		
+
 		File file = new File(DOCUMENT_ROOT + url);
-		
-		//nio
-		byte[] body = Files.readAllBytes(file.toPath());		//한번에 다읽는다
-		String contentType = Files.probeContentType(file.toPath());					// os에 파일지정한곳 확인
-		
+		if (!file.exists()) {
+
+			reponse404Error(outputStream, protocol); // <<구현
+			return;
+		}
+		// nio
+		byte[] body = Files.readAllBytes(file.toPath()); // 한번에 다읽는다
+		String contentType = Files.probeContentType(file.toPath()); // os에 파일지정한곳 확인
+
 		// 응답
-		outputStream.write("HTTP/1.1 200 OK\r\n".getBytes("UTF-8")); 	// 인코딩
-		outputStream.write(("Content-Type:" + contentType + "; charset=utf-8\r\n").getBytes("UTF-8"));	//css 적용 이쁘게 만들어준다.
+		outputStream.write((protocol + "HTTP/1.1 200 OK\r\n").getBytes("UTF-8")); // 인코딩
+		outputStream.write(("Content-Type:" + contentType + "; charset=utf-8\r\n").getBytes("UTF-8")); // css 적용 이쁘게
+																										// 만들어준다.
+		outputStream.write("\r\n".getBytes());
+		outputStream.write(body);
+
+	}
+
+	private void reponse404Error(OutputStream outputStream, String protocol) throws IOException {
+		// HTTP/1.1 404 Not Found
+		// Content-Type:......
+		// \r\n
+		// 내용 넣기....
+		// default(welcome) file set
+		String url = "/404.html";
+		File file = new File(DOCUMENT_ROOT + "/error" + url);
+		
+		byte[] body = Files.readAllBytes(file.toPath()); // 한번에 다읽는다
+		String contentType = Files.probeContentType(file.toPath()); // os에 파일지정한곳 확인
+		
+		outputStream.write((protocol + "HTTP/1.1 404 Not Found\r\n").getBytes("UTF-8")); // 인코딩
+		outputStream.write(("Content-Type:" + contentType + "; charset=utf-8\r\n").getBytes("UTF-8")); // css 적용 이쁘게
+		outputStream.write("\r\n".getBytes());
+		outputStream.write(body);
+	}
+
+	private void reponse400Error(OutputStream outputStream, String protocol) throws IOException {
+		// HTTP/1.1 400 Bad Request
+		// Content-Type:......
+		// \r\n
+		// 내용 넣기....
+		String url = "/400.html";
+		File file = new File(DOCUMENT_ROOT + "/error" + url);
+		
+		byte[] body = Files.readAllBytes(file.toPath()); // 한번에 다읽는다
+		String contentType = Files.probeContentType(file.toPath()); // os에 파일지정한곳 확인
+		
+		outputStream.write((protocol + "HTTP/1.1 400 Bad Request \r\n").getBytes("UTF-8")); // 인코딩
+		outputStream.write(("Content-Type:" + contentType + "; charset=utf-8\r\n").getBytes("UTF-8")); // css 적용 이쁘게
 		outputStream.write("\r\n".getBytes());
 		outputStream.write(body);
 		
+
 	}
 
 	public void consoleLog(String message) {
