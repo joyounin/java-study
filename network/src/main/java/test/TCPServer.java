@@ -27,7 +27,7 @@ public class TCPServer {
 				// 포트랑 ip주소까지 포트는 TCP에 달려있다.
 				InetSocketAddress inetRemoteSocketAddress = 
 						(InetSocketAddress)socket.getRemoteSocketAddress();
-				String remoteHostAddress = inetRemoteSocketAddress. getAddress().getHostAddress();
+				String remoteHostAddress = inetRemoteSocketAddress.getAddress().getHostAddress();
 				int remoteport = inetRemoteSocketAddress.getPort();
 				System.out.println("[server] connected by client[" + remoteHostAddress + ":" + remoteport + "]");
 				

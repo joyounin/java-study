@@ -13,7 +13,7 @@ public class BufferedOutputStreamTest {
 		try {
 			// 기반 스트림
 			FileOutputStream fos = new FileOutputStream("hello.txt");
-
+			
 			// 보조 스트림
 			bos = new BufferedOutputStream(fos);
 
