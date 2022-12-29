@@ -19,6 +19,8 @@ public class EchoRequestHandler extends Thread {
 
 	@Override
 	public void run() {
+		
+		
 	    InetSocketAddress inetRemoteSocketAddress = (InetSocketAddress) socket.getRemoteSocketAddress();
 	    String remoteHostAddress = inetRemoteSocketAddress.getAddress().getHostAddress();
 	    int remotePort = inetRemoteSocketAddress.getPort();
