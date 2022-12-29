@@ -9,6 +9,7 @@ import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 import java.net.InetSocketAddress;
 import java.net.Socket;
+import java.net.SocketException;
 import java.util.Scanner;
 
 public class EchoClient {
@@ -30,19 +31,21 @@ public class EchoClient {
 			while (true) {
 				System.out.print(">");
 				String line = scanner.nextLine();
-				
-				if("exit".equals(line)) {
+
+				if ("exit".equals(line)) {
 					break;
 				}
 				pw.println(line);
 				String data = br.readLine();
-				if(data == null) {
+				if (data == null) {
 					log("closed by server");
 					break;
 				}
 				System.out.println("<" + data);
 			}
-			
+
+		} catch (SocketException ex) {
+			System.out.println("[client] suddnely closed by client:" + ex);
 		} catch (IOException e) {
 			log("error:" + e);
 		} finally {
@@ -50,7 +53,7 @@ public class EchoClient {
 				if (socket != null && !socket.isClosed()) {
 					socket.close();
 				}
-				if(scanner != null) {
+				if (scanner != null) {
 					scanner.close();
 				}
 			} catch (IOException e) {
