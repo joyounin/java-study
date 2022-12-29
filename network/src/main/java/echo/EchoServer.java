@@ -11,6 +11,7 @@ import java.net.Socket;
 
 public class EchoServer {
 	public static final int PORT = 8000;
+	
 	public static void main(String[] args) {
 		ServerSocket serverSocket = null;
 		
@@ -29,8 +30,8 @@ public class EchoServer {
 			log("connected by client[" + remoteHostAddress + ":" + remoteport + "]");
 			
 			try {
-				PrintWriter pw = new PrintWriter(new OutputStreamWriter(socket.getOutputStream()), true);
-				BufferedReader br = new BufferedReader(new InputStreamReader(socket.getInputStream()));	
+				PrintWriter pw = new PrintWriter(new OutputStreamWriter(socket.getOutputStream(), "utf-8"), true);
+				BufferedReader br = new BufferedReader(new InputStreamReader(socket.getInputStream(), "utf-8"));	
 				
 				
 				while(true) {
@@ -41,7 +42,7 @@ public class EchoServer {
 					}
 					
 					log("received:" + data);
-					pw.println(data);
+					pw.println(data);				//print는 write만 하고 flush를 하지 않아 사용 불가
 				}
 			} catch(IOException ex) {
 				log("error:" + ex);
