@@ -19,12 +19,13 @@ public class EchoServer {
 		try {
 			serverSocket = new ServerSocket();
 
-			serverSocket.bind(new InetSocketAddress("0.0.0.0", PORT));
+			serverSocket.bind(new InetSocketAddress("0.0.0.0", PORT), 10);
 			log("starts...[port:" + PORT + "]");
 
 			Socket socket = serverSocket.accept();
-
-			InetSocketAddress inetRemoteSocketAddress = (InetSocketAddress) socket.getRemoteSocketAddress();
+			
+			
+			InetSocketAddress inetRemoteSocketAddress = (InetSocketAddress) socket.getRemoteSocketAddress(); //내 서버에 들어온 client 정보 가져오기
 			String remoteHostAddress = inetRemoteSocketAddress.getAddress().getHostAddress();
 			int remoteport = inetRemoteSocketAddress.getPort();
 			log("connected by client[" + remoteHostAddress + ":" + remoteport + "]");

@@ -24,7 +24,7 @@ public class EchoClient {
 			socket.connect(new InetSocketAddress(SERVER_IP, EchoServer.PORT));
 			log("connected");
 
-			PrintWriter pw = new PrintWriter(new OutputStreamWriter(socket.getOutputStream(), "utf-8"), true);
+			PrintWriter pw = new PrintWriter(new OutputStreamWriter(socket.getOutputStream(), "utf-8"), true);		//true가 반환되면 buffer가 차지 않아도 서버르를 종료해준다
 			BufferedReader br = new BufferedReader(new InputStreamReader(socket.getInputStream(), "utf-8"));
 
 			scanner = new Scanner(System.in);
