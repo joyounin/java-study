@@ -24,14 +24,14 @@ public class Prob3 {
 				}
 			}
 			if (number % 2 == 0) {
-			System.out.println("결과 값 : " + num1);
-			num1 = 0;
-			num2 = 0;
+				System.out.println("결과 값 : " + num1);
+				num1 = 0;
+				num2 = 0;
 			}
 			else {
-			System.out.println("결과 값 : " + num2);
-			num1 = 0;
-			num2 = 0;
+				System.out.println("결과 값 : " + num2);
+				num1 = 0;
+				num2 = 0;
 			}
 		}
 	}

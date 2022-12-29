@@ -95,7 +95,7 @@ public class RequestHandler extends Thread {
 			url = "/index.html";
 		}
 
-		File file = new File(DOCUMENT_ROOT + url);
+		File file = new File(DOCUMENT_ROOT + url);					//DOCUMENT_ROOT == "./webapp"
 		if (!file.exists()) {
 
 			reponse404Error(outputStream, protocol); // <<구현
