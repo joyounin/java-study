@@ -10,7 +10,7 @@ import java.net.Socket;
 import java.util.Scanner;
 
 import echo.EchoServer;
-
+//test
 public class ChatClient {
 	private static final String SERVER_IP = "127.0.0.1";
 	
