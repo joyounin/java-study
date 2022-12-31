@@ -12,7 +12,7 @@ import java.util.Scanner;
 import echo.EchoServer;
 //test
 public class ChatClient {
-	private static final String SERVER_IP = "127.0.0.1";
+	public static final String SERVER_IP = "127.0.0.1";
 	
 	public static void main(String[] args) {
 		Scanner scanner = null;
@@ -33,17 +33,17 @@ public class ChatClient {
 			PrintWriter pw = new PrintWriter(new OutputStreamWriter(socket.getOutputStream(), "utf-8"), true);		//true가 반환되면 buffer가 차지 않아도 서버르를 종료해준다
 			
 			// 5. join 프로토콜
-			System.out.println("닉네임>> ");
+			System.out.print("닉네임>> ");
 			String nickname = scanner.nextLine();
 			pw.println("join: " + nickname);
-			pw.flush();
+			//pw.flush();
 			
 			// 6. ChatClientThread 시작
 			new ChatClientThread(socket).start();
 			
 			// 7. 키보드 입력 처리
 			while(true) {
-				System.out.println(">>");
+				System.out.print(">>");
 				String input = scanner.nextLine();
 				
 				if("quit".equals(input) == true) {
@@ -51,7 +51,7 @@ public class ChatClient {
 					break;
 				} else {
 					// 9. 메시지 처리
-					pw.println("메세지:" + input);
+					pw.print("메세지:" + input);
 				}
 			}
 		} catch(IOException e) {
