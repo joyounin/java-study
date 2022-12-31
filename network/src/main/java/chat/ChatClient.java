@@ -35,7 +35,7 @@ public class ChatClient {
 			// 5. join 프로토콜
 			System.out.print("닉네임>> ");
 			String nickname = scanner.nextLine();
-			pw.println("join: " + nickname);
+			pw.println("join:" + nickname);
 			//pw.flush();
 			
 			// 6. ChatClientThread 시작
@@ -47,11 +47,11 @@ public class ChatClient {
 				String input = scanner.nextLine();
 				
 				if("quit".equals(input) == true) {
-					doQuit(pw);
+					pw.println("quit:" + input);
 					break;
 				} else {
 					// 9. 메시지 처리
-					pw.print("메세지:" + input);
+					pw.println("message:" + input);
 				}
 			}
 		} catch(IOException e) {
@@ -69,10 +69,7 @@ public class ChatClient {
 			}
 		}
 	}
-	private static void doQuit(PrintWriter pw) {
-		// TODO Auto-generated method stub
-		
-	}
+
 	static void log(String message) {
 		System.out.println("[ChatClient]" + message);
 	}
