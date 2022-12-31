@@ -51,6 +51,7 @@ public class ChatClient {
 					break;
 				} else {
 					// 9. 메시지 처리
+					pw.println("메세지:" + input);
 				}
 			}
 		} catch(IOException e) {

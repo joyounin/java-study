@@ -15,8 +15,7 @@ import java.util.Scanner;
 
 public class ChatServer {
 	public static final int PORT = 8000;
-	//test2
-	//test3
+
 	public static void main(String[] args) {
 		ServerSocket serverSocket = null;
 		List<Writer> listWriters = new ArrayList<Writer>();
