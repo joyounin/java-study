@@ -73,7 +73,7 @@ public class ChatClient {
 		// TODO Auto-generated method stub
 		
 	}
-	private static void log(String message) {
+	static void log(String message) {
 		System.out.println("[ChatClient]" + message);
 	}
 }
