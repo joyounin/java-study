@@ -26,10 +26,8 @@ public class ChatClientThread extends Thread {
 				}
 				System.out.println(message);
 			}
-		} catch (SocketException ex) {
-			System.out.println("[client] suddnely closed by client:" + ex);
-		} catch (IOException e) {
-			// ChatClient.log("error:" + e);
+		}catch (IOException e) {
+			 ChatClient.log("error:" + e);
 		} finally {
 			try {
 				if (socket != null && !socket.isClosed()) {

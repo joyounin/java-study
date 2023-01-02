@@ -43,7 +43,6 @@ public class ChatWindow {
 		// Textfield
 		textField.setColumns(80);
 		textField.addKeyListener(new KeyAdapter() {
-
 			@Override
 			public void keyPressed(KeyEvent e) {
 				char keyCode = e.getKeyChar();
