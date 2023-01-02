@@ -17,7 +17,8 @@ public class ChatServerThread extends Thread {
 	private String nickName;
 	private Socket socket;
 	List<Writer> listWriters;
-	
+
+	//test
 	@Override
 	public void run() {
 		BufferedReader br;
