@@ -39,8 +39,6 @@ public static final String SERVER_IP = "127.0.0.1";
 			pw.println("join:" + nickname);
 			//pw.flush();
 			
-			scanner.close();
-			
 			// 6. ChatClientThread 시작
 			new ChatClientThread(socket).start();
 			
@@ -50,7 +48,6 @@ public static final String SERVER_IP = "127.0.0.1";
 				String input = scanner.nextLine();
 				
 				if("quit".equals(input) == true) {
-					pw.println("quit:" + input);
 					break;
 				} else {
 					// 9. 메시지 처리
@@ -64,9 +61,9 @@ public static final String SERVER_IP = "127.0.0.1";
 				if (socket != null && !socket.isClosed()) {
 					socket.close();
 				}
-				if (scanner != null) {
-					scanner.close();
-				}
+//				if (scanner != null) {
+//					scanner.close();
+//				}
 			} catch (IOException ex) {
 				ex.printStackTrace();
 			}

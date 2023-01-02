@@ -57,17 +57,16 @@ public class ChatServerThread extends Thread {
 			log("error:" + e);
 		} catch (IOException e) {
 			log("error:" + e);
-		} finally {
-			try {
-				if(socket != null && !socket.isClosed()) {
-					socket.close();
-				}
-			} catch(IOException ex) {
-				ex.printStackTrace();
-			}
 		}
-
-	}
+//		} finally {
+//			try {
+//				if(socket != null && !socket.isClosed()) {
+//					socket.close();
+//				}
+//			} catch(IOException ex) {
+//				ex.printStackTrace();
+//			}
+		}
 
 	public ChatServerThread(Socket socket, List<Writer> listWriters) {
 		this.socket = socket;
