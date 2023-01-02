@@ -46,7 +46,6 @@ public static final String SERVER_IP = "127.0.0.1";
 			while(true) {
 				System.out.print(">>");
 				String input = scanner.nextLine();
-				
 				if("quit".equals(input) == true) {
 					break;
 				} else {
@@ -61,9 +60,6 @@ public static final String SERVER_IP = "127.0.0.1";
 				if (socket != null && !socket.isClosed()) {
 					socket.close();
 				}
-//				if (scanner != null) {
-//					scanner.close();
-//				}
 			} catch (IOException ex) {
 				ex.printStackTrace();
 			}
