@@ -8,8 +8,6 @@ import java.awt.TextArea;
 import java.awt.TextField;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
@@ -36,13 +34,8 @@ public class ChatWindow {
 		buttonSend.addActionListener( new ActionListener() {
 			@Override
 			public void actionPerformed( ActionEvent actionEvent ) {
-				//sendMessage();
-				System.out.println("!!!!!!!!!!!!!!!");
+				sendMessage();
 			}
-		});
-		
-		buttonSend.addActionListener((ActionEvent e ) -> {
-			
 		});
 
 		// Textfield
@@ -69,5 +62,10 @@ public class ChatWindow {
 	}
 	
 	private void sendMessage() {
+		String message = textField.getText();
+		System.out.println("메세지 보내는 프로토콜 구현!!:" + message);
+		
+		textField.setText("");
+		textField.requestFocus();
 	}
 }
