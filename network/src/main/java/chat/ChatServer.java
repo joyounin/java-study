@@ -15,8 +15,7 @@ import java.util.Scanner;
 
 public class ChatServer {
 	public static final int PORT = 8000;
-	//test2
-	//test3
+
 	public static void main(String[] args) {
 		ServerSocket serverSocket = null;
 		List<Writer> listWriters = new ArrayList<Writer>();
@@ -26,9 +25,9 @@ public class ChatServer {
 			serverSocket = new ServerSocket();
 
 			// 2. 바인딩
-			String hostAddress = InetAddress.getLocalHost().getHostAddress();
-			serverSocket.bind(new InetSocketAddress(hostAddress, PORT));
-			log("연결 기다림 " + hostAddress + ":" + PORT);
+			//String hostAddress = InetAddress.getLocalHost().getHostAddress();
+			serverSocket.bind(new InetSocketAddress(ChatClient.SERVER_IP, PORT));
+			log("연결 기다림 " + ChatClient.SERVER_IP + ":" + PORT);
 
 			// 3. 요청 대기
 			while (true) {

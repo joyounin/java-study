@@ -24,7 +24,11 @@ public class ChatServerThread extends Thread {
 		PrintWriter pw;
 		try {
 			// 1. remote host Information
-			
+//			InetSocketAddress inetRemoteSocketAddress = (InetSocketAddress) socket.getRemoteSocketAddress();
+//		    String remoteHostAddress = inetRemoteSocketAddress.getAddress().getHostAddress();
+//		    int remotePort = inetRemoteSocketAddress.getPort();
+//		    log("connected by client[" + remoteHostAddress + ":" + remotePort + "]");
+		    
 			// 2. 스트림 얻기
 			br = new BufferedReader(new InputStreamReader(socket.getInputStream(), StandardCharsets.UTF_8));
 			pw = new PrintWriter(new OutputStreamWriter(socket.getOutputStream(), StandardCharsets.UTF_8), true);
@@ -64,10 +68,6 @@ public class ChatServerThread extends Thread {
 		}
 
 	}
-	
-	public ChatServerThread(Socket socket) {
-		this.socket = socket;
-	}
 
 	public ChatServerThread(Socket socket, List<Writer> listWriters) {
 		this.socket = socket;
@@ -78,13 +78,14 @@ public class ChatServerThread extends Thread {
 		this.nickName = nickName;
 
 		String data = nickName + "님이 참여하였습니다.";
-		
+		broadcast(data);
 		// wirter pool에 저장
 		addWriter(writer);
 		
 		// ack
-		((PrintWriter) writer).println("join:ok");
-		((PrintWriter) writer).flush();
+		PrintWriter printWriter = (PrintWriter)writer;
+		printWriter.println("join:ok");
+		printWriter.flush();
 	}
 
 	private void addWriter(Writer writer) {
