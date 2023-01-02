@@ -52,7 +52,6 @@ public class ChatServerThread extends Thread {
 				}
 			}
 			
-			
 		} catch (SocketException e) {
 			log("error:" + e);
 		} catch (IOException e) {

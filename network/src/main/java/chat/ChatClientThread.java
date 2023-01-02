@@ -21,7 +21,7 @@ public class ChatClientThread extends Thread {
 			while (true) {
 				String message = br.readLine();
 				if (message == null) {
-					ChatClient.log("closed by server");
+					ChatClient.log("closed by client");
 					break;
 				}
 				System.out.println(message);
