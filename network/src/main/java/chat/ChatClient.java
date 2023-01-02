@@ -12,7 +12,11 @@ import java.util.Scanner;
 import echo.EchoServer;
 //test
 public class ChatClient {
+<<<<<<< HEAD
 public static final String SERVER_IP = "127.0.0.1";
+=======
+	public static final String SERVER_IP = "127.0.0.1";
+>>>>>>> branch 'master' of https://github.com/joyounin/java-study.git
 	
 	public static void main(String[] args) {
 		Scanner scanner = null;
@@ -37,10 +41,13 @@ public static final String SERVER_IP = "127.0.0.1";
 			String nickname = scanner.nextLine();
 			pw.println("join:" + nickname);
 			//pw.flush();
+<<<<<<< HEAD
 //			if(!nickname.isEmpty()) {
 //				break;
 //			}
 //			System.out.println("닉네임은 한글자 이상 입력해야 합니다.");
+=======
+>>>>>>> branch 'master' of https://github.com/joyounin/java-study.git
 			
 			scanner.close();
 			

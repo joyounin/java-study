@@ -36,8 +36,13 @@ public class ChatWindow {
 		buttonSend.addActionListener( new ActionListener() {
 			@Override
 			public void actionPerformed( ActionEvent actionEvent ) {
-				sendMessage();
+				//sendMessage();
+				System.out.println("!!!!!!!!!!!!!!!");
 			}
+		});
+		
+		buttonSend.addActionListener((ActionEvent e ) -> {
+			
 		});
 
 		// Textfield
