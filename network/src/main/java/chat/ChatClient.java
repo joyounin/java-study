@@ -12,7 +12,7 @@ import java.util.Scanner;
 import echo.EchoServer;
 
 public class ChatClient {
-// 1234
+// 123456
 public static final String SERVER_IP = "127.0.0.1";
 	
 	public static void main(String[] args) {
