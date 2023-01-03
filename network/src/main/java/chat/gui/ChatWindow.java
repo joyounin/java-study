@@ -35,15 +35,19 @@ public class ChatWindow {
 	private TextField textField;
 	private TextArea textArea;
 	Socket socket = null;
-	ServerSocket serverSocket = null;
+	PrintWriter pw = null;
+	BufferedReader br = null;
 	
 	public ChatWindow(String name) {
-		frame = new Frame(name);
+		this.frame = new Frame(name);
 		pannel = new Panel();
 		buttonSend = new Button("Send");
 		textField = new TextField();
 		textArea = new TextArea(30, 80);
+		
 	}
+
+
 
 	public void show() {
 		// Button
@@ -92,41 +96,37 @@ public class ChatWindow {
 		
 		
 		try {
-			// 1. Server Socket 생성
-			serverSocket = new ServerSocket();
-
-			// 2. 바인딩
-			serverSocket.bind(new InetSocketAddress("127.0.0.1", 5000));
-			System.out.println("연결 기다림 " + "127.0.0.1" + ":" + 5000);
 			// IOStream 받아오기
-			BufferedReader br = new BufferedReader(new InputStreamReader(socket.getInputStream(), StandardCharsets.UTF_8));
-			PrintWriter pw = new PrintWriter(new OutputStreamWriter(socket.getOutputStream(), "utf-8"), true);
-			// ChatClientThread 생성하고 실행
-			while (true) {
-				Socket socket = serverSocket.accept();
-				new ChatClientThread(socket).start();
-			}
-		} catch (IOException e1) {
-			e1.printStackTrace();
-		}
+			br = new BufferedReader(new InputStreamReader(socket.getInputStream(), StandardCharsets.UTF_8));
+	        pw = new PrintWriter(new OutputStreamWriter(socket.getOutputStream(),"UTF-8"), true);
+	      } catch (IOException e1) {
+	         e1.printStackTrace();
+	      }
+		// ChatClientThread 생성하고 실행
+		new ChatClientThread(socket).start();
+			
 		
 	}
+		
 	private void finish() {
 		// quit protocol 구현
-		
+		 pw.println("quit");
 		// exit java(Application)
 		System.exit(0);		// 0은 정상종료
 	}
 	private void sendMessage() {
 		String message = textField.getText();
 		System.out.println("메세지 보내는 프로토콜 구현!!:" + message);
-		
+		if ("quit".equals(message)) {
+	         finish();
+	      }
+		pw.println("message:" + message);
 		textField.setText("");
 		textField.requestFocus();
-		
+		updateTextArea(message);
 		// updateTextArea()
 		// ChatClientThread 에서 서버로 부터 받은 메세지가 있다 치고~~~
-		updateTextArea(message);
+		
 	}
 	
 	private void updateTextArea(String message) {
@@ -145,17 +145,11 @@ public class ChatWindow {
 		@Override
 		public void run() {
 			BufferedReader br;
-			PrintWriter pw;
 			try {
 				br = new BufferedReader(new InputStreamReader(socket.getInputStream(), "utf-8"));
-				pw = new PrintWriter(new OutputStreamWriter(socket.getOutputStream(), StandardCharsets.UTF_8), true);
 				while (true) {
-					String line = br.readLine();
-					if (line == null) {
-						System.out.println("closed by server");
-						break;
-					}
-					updateTextArea(line);
+					String data = br.readLine();
+					updateTextArea(data);
 				}
 			}catch (IOException e) {
 				 System.out.println("error:" + e);

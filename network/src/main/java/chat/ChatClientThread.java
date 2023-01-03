@@ -27,7 +27,7 @@ public class ChatClientThread extends Thread {
 				System.out.println(message);
 			}
 		}catch (IOException e) {
-			 ChatClient.log("error:서버가 강제 종료 되었습니다." + e);
+			 ChatClient.log("error:클라이언트가 종료 되었습니다." + e);
 			 System.exit(1);
 		} finally {
 			try {
