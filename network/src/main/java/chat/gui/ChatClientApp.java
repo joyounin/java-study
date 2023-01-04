@@ -32,6 +32,8 @@ public class ChatClientApp {
 			
 			// 1. create socket
 			socket = new Socket();
+			
+			
 
 			// 2. connect to server
 			socket.connect(new InetSocketAddress(ChatClient.SERVER_IP, ChatServer.PORT));

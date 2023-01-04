@@ -138,9 +138,7 @@ public class ChatWindow {
 
 		@Override
 		public void run() {
-			BufferedReader br;
 			try {
-				br = new BufferedReader(new InputStreamReader(socket.getInputStream(), "utf-8"));
 				while (true) {
 					String data = br.readLine();
 					updateTextArea(data);
