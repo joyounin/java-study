@@ -46,7 +46,7 @@ public class ChatClientApp {
 			System.out.print("닉네임을 입력하세요>>");
 			String nickname = scanner.nextLine();
 			
-			pw.println("join" + ":" + nickname);		
+			pw.println("join:" + nickname);		
 			String data = br.readLine();
 
 			if ("join:ok".equals(data)) {

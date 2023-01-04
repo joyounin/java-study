@@ -147,16 +147,8 @@ public class ChatWindow {
 				}
 			}catch (IOException e) {
 				 System.out.println("error:" + e);
-			} finally {
-				try {
-					if (socket != null && !socket.isClosed()) {
-						socket.close();
-					}
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
-
-			}
+			} 
+			
 		}
 		
 	}
