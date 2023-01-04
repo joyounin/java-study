@@ -29,7 +29,7 @@ public class ChatClientApp {
 
 				System.out.println("대화명은 한글자 이상 입력해야 합니다.\n");
 			}
-			scanner.close();
+
 			// 1. create socket
 			socket = new Socket();
 
@@ -43,13 +43,15 @@ public class ChatClientApp {
 			PrintWriter pw = new PrintWriter(new OutputStreamWriter(socket.getOutputStream(), "utf-8"), true);
 
 			// 4. join protocol 진행
+			System.out.print("닉네임을 입력하세요>>");
+			String nickname = scanner.nextLine();
 			String data = br.readLine();
-			if (!data.isEmpty() == false) {
-				pw.println("JOIN:" + name);
+			if (!data.isEmpty()) {
+				pw.println("join:" + nickname);
 			}
-			if ("JOIN:OK".equals(data)) {
-				System.out.println(name + "님이 입장하였습니다.");
-				new ChatWindow(name).show();
+			if ("join:ok".equals(data)) {
+				System.out.println(nickname + "님이 입장하였습니다.");
+				new ChatWindow(nickname,socket).show();
 			}
 		} catch (IOException e) {
 			e.printStackTrace();

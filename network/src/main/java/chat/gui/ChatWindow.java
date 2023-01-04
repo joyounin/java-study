@@ -38,12 +38,13 @@ public class ChatWindow {
 	PrintWriter pw = null;
 	BufferedReader br = null;
 	
-	public ChatWindow(String name) {
+	public ChatWindow(String name, Socket socket) {
 		this.frame = new Frame(name);
 		pannel = new Panel();
 		buttonSend = new Button("Send");
 		textField = new TextField();
 		textArea = new TextArea(30, 80);
+		this.socket = socket;
 		
 	}
 
