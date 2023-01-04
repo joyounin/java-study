@@ -6,4 +6,7 @@
 	<version>0.0.1-SNAPSHOT</version>
 	</parent>
 	<artifactId>practice03</artifactId>
+	 <build>
+	  <finalName>practice03</finalName>
+  </build>
 </project>

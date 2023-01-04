@@ -17,13 +17,11 @@
 		<module>chapter03</module>
 		<module>practice01</module>
 		<module>practice02</module>
-		<module>practic03</module>
 		<module>practice03</module>
 		<module>practice04</module>
 		<module>practice05</module>
 		<module>chapter04</module>
 		<module>finaltest</module>
 		<module>network</module>
-		<module>dd</module>
 	</modules>
 </project>
