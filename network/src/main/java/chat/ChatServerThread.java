@@ -23,6 +23,7 @@ public class ChatServerThread extends Thread {
 		BufferedReader br;
 		PrintWriter pw;
 		try {
+		
 			// 1. remote host Information
 //			InetSocketAddress inetRemoteSocketAddress = (InetSocketAddress) socket.getRemoteSocketAddress();
 //		    String remoteHostAddress = inetRemoteSocketAddress.getAddress().getHostAddress();
@@ -47,6 +48,7 @@ public class ChatServerThread extends Thread {
 					doMessage(tokens[1]);
 				} else if("quit".equals(tokens[0])) {
 					doQuit(pw);
+					
 				}else {
 					ChatServer.log("에러:알수 없는 요청(" + tokens[0] + ")");
 				}
@@ -104,7 +106,7 @@ public class ChatServerThread extends Thread {
 	}
 
 	private void doMessage(String message) {
-		String data = nickName + ":" + message;
+		String data =nickName + ":" + message+"ChatServerThread.doMessage";
 		broadcast(data);
 		
 	}

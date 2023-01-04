@@ -17,15 +17,8 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
-import java.net.InetSocketAddress;
-import java.net.ServerSocket;
 import java.net.Socket;
 import java.nio.charset.StandardCharsets;
-
-import chat.ChatClient;
-import chat.ChatClientThread;
-import chat.ChatServer;
-import chat.ChatServerThread;
 
 public class ChatWindow {
 
@@ -37,14 +30,17 @@ public class ChatWindow {
 	Socket socket = null;
 	PrintWriter pw = null;
 	BufferedReader br = null;
+	String name = null;
+	private String nickname;
 	
-	public ChatWindow(String name, Socket socket) {
+	public ChatWindow(String name, String nickname, Socket socket) {
 		this.frame = new Frame(name);
 		pannel = new Panel();
 		buttonSend = new Button("Send");
 		textField = new TextField();
 		textArea = new TextArea(30, 80);
 		this.socket = socket;
+		this.nickname = nickname;
 		
 	}
 
@@ -124,7 +120,7 @@ public class ChatWindow {
 		pw.println("message:" + message);
 		textField.setText("");
 		textField.requestFocus();
-		updateTextArea(message);
+		// updateTextArea(message);
 		// updateTextArea()
 		// ChatClientThread 에서 서버로 부터 받은 메세지가 있다 치고~~~
 		

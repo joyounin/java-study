@@ -19,7 +19,7 @@ public class ChatClientApp {
 		Socket socket = null;
 		try {
 			while (true) {
-				System.out.println("대화명을 입력하세요.");
+				System.out.println("채팅방이름을 입력하세요.");
 				System.out.print(">>> ");
 				name = scanner.nextLine();
 
@@ -27,7 +27,7 @@ public class ChatClientApp {
 					break;
 				}
 
-				System.out.println("대화명은 한글자 이상 입력해야 합니다.\n");
+				System.out.println("채팅방이름은 한글자 이상 입력해야 합니다.\n");
 			}
 
 			// 1. create socket
@@ -45,26 +45,17 @@ public class ChatClientApp {
 			// 4. join protocol 진행
 			System.out.print("닉네임을 입력하세요>>");
 			String nickname = scanner.nextLine();
+			
+			pw.println("join" + ":" + nickname);		
 			String data = br.readLine();
-			if (!data.isEmpty()) {
-				pw.println("join:" + nickname);
-			}
+
 			if ("join:ok".equals(data)) {
 				System.out.println(nickname + "님이 입장하였습니다.");
-				new ChatWindow(nickname,socket).show();
+				new ChatWindow(name, nickname, socket).show();
 			}
 		} catch (IOException e) {
 			e.printStackTrace();
-		} finally {
-			try {
-				if (socket != null && !socket.isClosed()) {
-					socket.close();
-				}
-			} catch (IOException ex) {
-				ex.printStackTrace();
-			}
-		}
-
+		} 
 	}
 
 }
