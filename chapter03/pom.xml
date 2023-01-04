@@ -1,23 +1,12 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <parent>
-    <groupId>com.duzone</groupId>
-    <artifactId>java-study</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
-  </parent>
-  <artifactId>chapter03</artifactId>
-  
-  <packaging>pom</packaging>
-	<properties>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<project.build.outputEncoding>UTF-8</project.build.outputEncoding>
-		<maven.compiler.source>17</maven.compiler.source>
-		<maven.compiler.target>17</maven.compiler.target>
-	</properties>
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.duzone</groupId>
+		<artifactId>java-study</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</parent>
+	<artifactId>chapter03</artifactId>
 	<build>
-		<finalName>java-study</finalName>
+		<finalName>chapter03</finalName>
 	</build>
-	<modules>
-		<module>chapter03</module>
-	</modules>
 </project>
