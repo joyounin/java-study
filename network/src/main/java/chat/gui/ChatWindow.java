@@ -120,9 +120,6 @@ public class ChatWindow {
 		pw.println("message:" + message);
 		textField.setText("");
 		textField.requestFocus();
-		// updateTextArea(message);
-		// updateTextArea()
-		// ChatClientThread 에서 서버로 부터 받은 메세지가 있다 치고~~~
 		
 	}
 	

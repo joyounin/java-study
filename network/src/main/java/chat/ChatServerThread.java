@@ -106,7 +106,7 @@ public class ChatServerThread extends Thread {
 	}
 
 	private void doMessage(String message) {
-		String data =nickName + ":" + message+"ChatServerThread.doMessage";
+		String data = nickName + ":" + message;
 		broadcast(data);
 		
 	}

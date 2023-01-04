@@ -29,7 +29,7 @@ public class ChatClientApp {
 
 				System.out.println("채팅방이름은 한글자 이상 입력해야 합니다.\n");
 			}
-
+			
 			// 1. create socket
 			socket = new Socket();
 
@@ -53,6 +53,7 @@ public class ChatClientApp {
 				System.out.println(nickname + "님이 입장하였습니다.");
 				new ChatWindow(name, nickname, socket).show();
 			}
+			scanner.close();
 		} catch (IOException e) {
 			e.printStackTrace();
 		} 
